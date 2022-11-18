@@ -1,6 +1,6 @@
 <h1>Signup!</h1>
 
-<%= form_for :user, url: '/users' do |f| %>
+<%= form_for :user, url: '/register' do |f| %>
   First Name:
   <div class="mb-3"><%= f.text_field :first_name %></div>
   Last Name:
@@ -12,5 +12,7 @@
   Password Confirmation: 
   <div class="mb-3"><%= f.password_field :password_confirmation %></div>
   <div class="mb-3"><%= f.submit "Submit" %></div>
-
+  <% if defined?(@user.errors) %>
+    <div class="alert alert-danger">ERROR: <%= @user.errors.full_messages.first %></div>
+  <% end %>
 <% end %>
