@@ -12,7 +12,4 @@
   Password Confirmation: 
   <div class="mb-3"><%= f.password_field :password_confirmation %></div>
   <div class="mb-3"><%= f.submit "Submit" %></div>
-  <% if defined?(@user.errors) %>
-    <div class="alert alert-danger">ERROR: <%= @user.errors.full_messages.first %></div>
-  <% end %>
 <% end %>
