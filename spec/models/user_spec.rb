@@ -76,5 +76,10 @@ RSpec.describe User, type: :model do
         loginUser = User.authenticate_with_credentials("BOBBYhIlL@gmail.com", "testpass")
         expect(loginUser).to match(@user)
       end
+
+      it 'should authenticate the user even if they include spaces' do
+        loginUser = User.authenticate_with_credentials("   bobbyhill@gmail.com", "testpass")
+        expect(loginUser).to match(@user)
+      end
   end
 end

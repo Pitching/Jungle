@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-
-  before_validation :strip_whitespace
   
   validates :password, confirmation: true, length: {minimum: 8}
   validates :password_confirmation, presence: true
@@ -11,12 +9,8 @@ class User < ApplicationRecord
   has_secure_password
 
   def self.authenticate_with_credentials(email, password)
-    @user = User.where("lower(email) = ?", email.downcase).first
+    @user = User.where("lower(email) = ?", email.strip.downcase).first
     @user && @user.authenticate(password) ? @user : nil
-  end
-
-  def strip_whitespace
-    self.email = self.email.strip unless self.email.nil?
   end
 
 end
