@@ -19,10 +19,10 @@ Rails.application.routes.draw do
 
   get '/about' => 'about#index'
 
-  get '/register' => 'users#index'
+  get '/register' => 'users#new'
   post '/register' => 'users#create'
 
-  get '/login' => 'sessions#index'
+  get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 

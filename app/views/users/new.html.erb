@@ -1,0 +1,33 @@
+<h1>Signup!</h1>
+
+<%= form_for @user, url: '/register' do |form| %>
+
+  <div class="row">  
+    <div class="col-sm-6 col-sm-offset-1">
+      <% if form.object.errors.any? %>
+        <div class="alert alert-danger">
+          <strong>The following errors prevented registration:</strong>
+          <ul>
+            <% form.object.errors.full_messages.each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      
+      First Name:
+      <div class="mb-3"><%= form.text_field :first_name %></div>
+      Last Name:
+      <div class="mb-3"><%= form.text_field :last_name %></div>
+      Email: 
+      <div class="mb-3"><%= form.text_field :email %></div>
+      Password: 
+      <div class="mb-3"><%= form.password_field :password %></div>
+      Password Confirmation: 
+      <div class="mb-3"><%= form.password_field :password_confirmation %></div>
+      <div class="mb-3"><%= form.submit "Submit" %></div>
+
+    </div>
+  </div>
+
+<% end %>
